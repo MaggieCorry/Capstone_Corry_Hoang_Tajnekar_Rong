@@ -5,10 +5,18 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
+# Set the initial page configuration
+st.set_page_config(
+    #page_title="Carbon AIQ",
+    page_icon="📊",
+    layout="wide",  # Use wide layout to expand the width of the dashboard
+    initial_sidebar_state="expanded",
+)
 st.title('Carbon AIQ')
 
 # Sample DataFrame
 df = pd.read_csv("../EDA/clustered_out.csv")
+# FROM TABLE_X 
 df_dates = pd.read_csv("../EDA/capstone_withDates.csv")
 
 # Sidebar filters
