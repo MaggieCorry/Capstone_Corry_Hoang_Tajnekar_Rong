@@ -18,7 +18,7 @@ warnings.filterwarnings("ignore")
 #     initial_sidebar_state="expanded",
 # )
 st.title("Carbon AIQ")
-st.info("Mission Statement")
+st.info("Our mission is to revolutionize the carbon offsets market by partnering with the Berkeley Carbon Trading Project to create the first standardized, automated, and open-source database of carbon offset projects. ")
 
 df = pd.read_csv("data/streamlit_data.csv")
     # FROM TABLE_X 
@@ -72,19 +72,19 @@ st.markdown(
 )
 
 # Display subheaders
-st.subheader("What is Carbon Offset")
+st.subheader("What is Carbon Offset?")
 st.write("A carbon offset is a reduction in emissions of carbon dioxide or other greenhouse gases made in order to compensate for emissions produced elsewhere. By investing in carbon offset projects, such as reforestation or renewable energy, individuals and companies can balance out their own emissions.")
 
-st.subheader("What do we do")
-st.write("A paragraph about the problem and solution")
+st.subheader("Our Tool's Value")
+st.write("Our Carbon Offset Project Platform website, AIQ provides immense value through the Berkeley Carbon Trading Project by unifying and harmonizing data from multiple carbon offset registries into a single, accessible database. This platform streamlines data processing through automated pipelines and advanced natural language processing (NL) and classification algorithms to empower environmental researchers with clean, accurate data for informed decision-making. This web interface enhances the value for current users of the Excel version of the database by offering robust visualization tools and comprehensive reports, facilitating advanced research and effective management of carbon offset initiatives. ")
 
-st.subheader("Our data source")
-st.write("The data source comes from renowned registries....")
+st.subheader("Data Sources")
+st.write("Also known as the PROJECT tab from the Current Registry's Excel tool, contains data on roughly 10,000 projects, useful for a project type classification problem and other potential research inquiries. The underlying data for the current registry includes raw data downloaded from American Carbon Registry (ACR), Climate Action Reserve (CAR), Gold Standard, and Verified Carbon Standard. More information on this data can be found in the About BCTP tab.")
 
 st.subheader("Our Customers")
 st.write("About the customers and their usecases")
 
 # Auto-refresh every 3 seconds
-time.sleep(3)
+time.sleep(5)
 st.experimental_rerun()  # Refresh the app to update the displayed image
 
