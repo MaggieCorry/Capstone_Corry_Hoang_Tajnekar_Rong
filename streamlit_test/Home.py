@@ -84,6 +84,8 @@ st.write("Also known as the PROJECT tab from the Current Registry's Excel tool, 
 st.subheader("Our Customers")
 st.write("About the customers and their usecases")
 
+st.subheader("Contributors")
+
 # Auto-refresh every 3 seconds
 time.sleep(5)
 st.experimental_rerun()  # Refresh the app to update the displayed image
