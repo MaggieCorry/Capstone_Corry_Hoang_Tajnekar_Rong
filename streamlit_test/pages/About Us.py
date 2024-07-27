@@ -2,6 +2,13 @@ import streamlit as st
 from PIL import Image
 import os
 
+# Function to read CSS file and apply styles
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+# Apply CSS styles
+local_css("style.css")
 st.title("About Us")
 
 # Define the path to your local images

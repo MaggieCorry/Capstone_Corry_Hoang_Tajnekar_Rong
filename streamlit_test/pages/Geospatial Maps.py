@@ -2,13 +2,20 @@ import streamlit as st
 import plotly.express as px
 import pandas as pd
 
+# Function to read CSS file and apply styles
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+# Apply CSS styles
+local_css("style.css")
 # Check if the DataFrame exists in session state
 if 'df' not in st.session_state:
     st.error("Data not found. Please make sure to load the data on the Home page.")
 else:
     df = st.session_state.df
     
-    st.title("Global Trends")
+    st.title("Carbon offset projects around the world")
 
     # Define a mapping from custom regions to country names
     region_to_country = {

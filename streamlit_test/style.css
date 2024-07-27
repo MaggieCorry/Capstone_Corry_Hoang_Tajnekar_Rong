@@ -1,0 +1,125 @@
+/* styles.css */
+
+/* Apply the font globally */
+body, h1, h2, h3, h4, h5, h6, p, div {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff; 
+}
+
+.sidebar .sidebar-content {
+    background-color: #333333;
+    color: #ffffff; /* Set the text color to white for better contrast */
+}
+
+/* h1, h2, h3, h4, h5, h6 {
+    color: #000000;
+} */
+
+.stButton>button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 2.5em;            
+    color: #555;                 
+}
+
+h2 {
+    font-size: 2em;              
+    color: #5B9BD5;                 
+}
+/* Custom styles for title */
+div[data-testid="stMarkdownContainer"] h1 {
+    /* background-color: #222222; */
+    color: #33333;
+    font-size: 36px;
+    font-family: 'Roboto', sans-serif;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Custom styles for subheader */
+div[data-testid="stMarkdownContainer"] h2 {
+    background-color: #33333;
+    color: #ffffff;
+    font-size: 24px;
+    /* font-family: Arial, sans-serif; */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Custom styles for write text */
+div[data-testid="stMarkdownContainer"] p {
+    /* background-color: #d3d1d1; */
+    color: #33333;
+    font-size: 16px;
+    /* font-family: Arial, sans-serif; */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Custom styles for buttons */
+.stButton button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.stButton button:hover {
+    background-color: #45a049;
+}
+
+.stButton button:active {
+    background-color: #3e8e41;
+}
+
+.stTextInput {
+    font-size: 1.2em;            /* Text input font size */
+}
+
+.stMarkdown {
+    font-size: 1.1em;            /* Markdown text font size */
+    color: #333;                 /* Markdown text color */
+}
+
+/* Custom styles for multiselect field */
+.css-1e5imcs {
+    background-color: #ba3434;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.css-1okebmr-indicatorSeparator {
+    background-color: #ba3434;
+}
+
+.css-1hb7zxy-IndicatorsContainer {
+    color: #ffffff;
+}
+
+.css-1uccc91-singleValue {
+    color: #ffffff;
+}

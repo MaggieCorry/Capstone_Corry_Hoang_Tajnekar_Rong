@@ -10,18 +10,18 @@ import plotly.graph_objects as go
 
 # Suppress warnings
 warnings.filterwarnings("ignore")
+# Function to read CSS file and apply styles
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-# Set the initial page configuration
-# st.set_page_config(
-#     page_title="Carbon AIQ",
-#     layout="wide",
-#     initial_sidebar_state="expanded",
-# )
+# Apply CSS styles
+local_css("style.css")
 st.title("Carbon AIQ")
-st.info("Our mission is to revolutionize the carbon offsets market by partnering with the Berkeley Carbon Trading Project to create the first standardized, automated, and open-source database of carbon offset projects. ")
+st.info("Our mission is to empower individuals and organizations with transformative data that drives actionable insights and fosters sustainability. By unifying and harmonizing data from diverse carbon offset registries into a single, accessible platform, we are leading the way in creating a more transparent and impactful path toward a sustainable future.")
 
 df = pd.read_csv("data/streamlit_data.csv")
-    # FROM TABLE_X 
+# FROM TABLE_X 
 df_dates = pd.read_csv("data/capstone_withDates.csv")
 
 # Initialize session state with the DataFrame
@@ -87,6 +87,6 @@ st.write("About the customers and their usecases")
 st.subheader("Contributors")
 
 # Auto-refresh every 3 seconds
-time.sleep(5)
+time.sleep(2)
 st.experimental_rerun()  # Refresh the app to update the displayed image
 
