@@ -2,17 +2,17 @@
 
 /* Apply the font globally */
 body, h1, h2, h3, h4, h5, h6, p, div {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Georgia', serif;
 }
 
 body {
     background-color: #000000;
-    color: #ffffff; 
+    color: #003262; 
 }
 
 .sidebar .sidebar-content {
     background-color: #333333;
-    color: #ffffff; /* Set the text color to white for better contrast */
+    color: #003262; /* Set the text color to white for better contrast */
 }
 
 /* h1, h2, h3, h4, h5, h6 {
@@ -20,8 +20,8 @@ body {
 } */
 
 .stButton>button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #003262;
+    color: #D9661F;
     border: none;
     border-radius: 4px;
     padding: 10px 24px;
@@ -45,7 +45,7 @@ h2 {
 /* Custom styles for title */
 div[data-testid="stMarkdownContainer"] h1 {
     /* background-color: #222222; */
-    color: #33333;
+    color: #003262;
     font-size: 36px;
     font-family: 'Roboto', sans-serif;
     padding: 15px;
@@ -54,7 +54,7 @@ div[data-testid="stMarkdownContainer"] h1 {
 
 /* Custom styles for subheader */
 div[data-testid="stMarkdownContainer"] h2 {
-    background-color: #33333;
+    background-color: #003262;
     color: #ffffff;
     font-size: 24px;
     /* font-family: Arial, sans-serif; */
@@ -65,7 +65,7 @@ div[data-testid="stMarkdownContainer"] h2 {
 /* Custom styles for write text */
 div[data-testid="stMarkdownContainer"] p {
     /* background-color: #d3d1d1; */
-    color: #33333;
+    color: #003262;
     font-size: 16px;
     /* font-family: Arial, sans-serif; */
     padding: 10px;
@@ -74,7 +74,7 @@ div[data-testid="stMarkdownContainer"] p {
 
 /* Custom styles for buttons */
 .stButton button {
-    background-color: #4CAF50;
+    background-color: #D9661F;
     color: white;
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
@@ -86,11 +86,11 @@ div[data-testid="stMarkdownContainer"] p {
 }
 
 .stButton button:hover {
-    background-color: #45a049;
+    background-color: #D9661F;
 }
 
 .stButton button:active {
-    background-color: #3e8e41;
+    background-color: #D9661F;
 }
 
 .stTextInput {
@@ -104,22 +104,22 @@ div[data-testid="stMarkdownContainer"] p {
 
 /* Custom styles for multiselect field */
 .css-1e5imcs {
-    background-color: #ba3434;
+    background-color: #D9661F;
     color: #ffffff;
     font-size: 16px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Georgia', serif;
     padding: 10px;
     border-radius: 5px;
 }
 
 .css-1okebmr-indicatorSeparator {
-    background-color: #ba3434;
+    background-color: #D9661F;
 }
 
 .css-1hb7zxy-IndicatorsContainer {
-    color: #ffffff;
+    color: #003262;
 }
 
 .css-1uccc91-singleValue {
-    color: #ffffff;
+    color: #003262;
 }

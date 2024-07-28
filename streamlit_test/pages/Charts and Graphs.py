@@ -25,35 +25,58 @@ else:
 
     col1, col2 = st.columns(2)
     with col1:
-        selected_regions = st.multiselect('Select Regions', options=all_options + list(df['Region'].unique()), default=all_options)
-    with col2:
         selected_scopes = st.multiselect('Select Scopes', options=all_options + list(df['Scope'].unique()), default=all_options)
-    
-    col3, col4 = st.columns(2)
-    with col3:
+    with col2:
         selected_types = st.multiselect('Select Types', options=all_options + list(df[' Type'].unique()), default=all_options)
+    
+    col3, col4, col5 = st.columns(3)
+    with col3:
+        selected_regions = st.multiselect('Select Regions', options=all_options + list(df['Region'].unique()), default=all_options)
     with col4:
+        selected_countries = st.multiselect('Select Countries', options=all_options + list(df['Country'].unique()), default=all_options)
+    with col5:
+        selected_states = st.multiselect('Select States', options=all_options + list(df['State'].unique()), default=all_options)
+
+    col6, col7 = st.columns(2)
+    with col6:
+        selected_arbwa = st.multiselect('Select ARB vs WA', options=all_options + list(df['Registry / ARB / WA'].unique()), default=all_options)
+    with col7:
         selected_registries = st.multiselect('Select Registries', options=all_options + list(df['Voluntary Registry'].unique()), default=all_options)
 
     # Reset filters to "No Filter" if they are empty
-    if not selected_regions:
-        selected_regions = all_options
     if not selected_scopes:
         selected_scopes = all_options
     if not selected_types:
         selected_types = all_options
+    if not selected_regions:
+        selected_regions = all_options
+    if not selected_countries:
+        selected_countries = all_options
+    if not selected_states:
+        selected_states = all_options
+    if not selected_arbwa:
+        selected_arbwa = all_options
     if not selected_registries:
         selected_registries = all_options
     
     # Filter the dataframe based on the selected filters
-    if "No Filter" not in selected_regions:
-        df = df[df['Region'].isin(selected_regions)]
-    
     if "No Filter" not in selected_scopes:
         df = df[df['Scope'].isin(selected_scopes)]
     
     if "No Filter" not in selected_types:
         df = df[df[' Type'].isin(selected_types)]
+    
+    if "No Filter" not in selected_countries:
+        df = df[df['Country'].isin(selected_countries)]
+
+    if "No Filter" not in selected_regions:
+        df = df[df['Region'].isin(selected_regions)]
+    
+    if "No Filter" not in selected_states:
+        df = df[df['State'].isin(selected_states)]
+
+    if "No Filter" not in selected_arbwa:
+        df = df[df['Registry / ARB / WA'].isin(selected_arbwa)]
     
     if "No Filter" not in selected_registries:
         df = df[df['Voluntary Registry'].isin(selected_registries)]
