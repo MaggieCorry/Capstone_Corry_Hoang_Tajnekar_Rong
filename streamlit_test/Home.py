@@ -75,8 +75,17 @@ st.markdown(
 st.subheader("What is Carbon Offset?")
 st.write("A carbon offset is a reduction in emissions of carbon dioxide or other greenhouse gases made in order to compensate for emissions produced elsewhere. By investing in carbon offset projects, such as reforestation or renewable energy, individuals and companies can balance out their own emissions.")
 
+st.subheader("About the Carbon Offset Market")
+st.write("In 2023, companies purchased and retired a record 164 million offsets, which was a 6% increase from 2022. The market is evolving rapidly, and some say it could grow to be worth $100 billion a year by 2030-35. However, others say that without regulation, no one would pay for carbon emissions, and that heavy-emitting companies could be criticized for having a right to pollute")
+st.write("There are two types of carbon offset markets: voluntary and compliance:")
+st.markdown("Voluntary markets")
+st.write("These markets are not regulated, and organizations participate based on their own emissions reduction goals. Individuals, companies, and other organizations can participate in voluntary markets, and consumers can buy offsets to compensate for emissions from specific activities, like long flights.")
+st.markdown("Compliance markets")
+st.write("These markets are created by government regulations to reduce emissions, and some of the most active compliance markets are in Europe and California.")
+
+
 st.subheader("Our Tool's Value")
-st.write("Our Carbon Offset Project Platform website, AIQ provides immense value through the Berkeley Carbon Trading Project by unifying and harmonizing data from multiple carbon offset registries into a single, accessible database. This platform streamlines data processing through automated pipelines and advanced natural language processing (NL) and classification algorithms to empower environmental researchers with clean, accurate data for informed decision-making. This web interface enhances the value for current users of the Excel version of the database by offering robust visualization tools and comprehensive reports, facilitating advanced research and effective management of carbon offset initiatives. ")
+st.write("Carbon AIQ provides immense value through the Berkeley Carbon Trading Project by unifying and harmonizing data from multiple carbon offset registries into a single, accessible database. This platform streamlines data processing through automated pipelines and advanced natural language processing (NL) and classification algorithms to empower environmental researchers with clean, accurate data for informed decision-making. This web interface enhances the value for current users of the Excel version of the database by offering robust visualization tools and comprehensive reports, facilitating advanced research and effective management of carbon offset initiatives. ")
 
 st.subheader("Data Sources")
 st.write("Also known as the PROJECT tab from the Current Registry's Excel tool, contains data on roughly 10,000 projects, useful for a project type classification problem and other potential research inquiries. The underlying data for the current registry includes raw data downloaded from American Carbon Registry (ACR), Climate Action Reserve (CAR), Gold Standard, and Verified Carbon Standard. More information on this data can be found in the About BCTP tab.")
@@ -84,7 +93,15 @@ st.write("Also known as the PROJECT tab from the Current Registry's Excel tool, 
 st.subheader("Our Customers")
 st.write("About the customers and their usecases")
 
-st.subheader("Contributors")
+st.subheader("Latest News on the Carbon Offset ")
+st.markdown("""
+- https://www.nytimes.com/2024/05/28/climate/yellen-carbon-offset-market.html
+- https://www.theguardian.com/environment/carbon-offset-projects
+- https://www.theguardian.com/environment/article/2024/jul/11/finite-carbon-forest-offsets-analysis
+- https://www.theguardian.com/environment/article/2024/jun/26/voluntary-carbon-market-offsetting-industry-reforms-cccg-climate-crisis-advisory-group-aoe
+- https://www.theguardian.com/business/article/2024/jun/17/ai-profits-tax-green-levy-imf-carbon-emissions""")
+
+#st.subheader("Contributors")
 
 # Auto-refresh every 3 seconds
 time.sleep(2)
