@@ -121,11 +121,11 @@ else:
         xaxis_title='Year',
         yaxis_title='Credits (in Millions)',
         legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=1.02,
-            xanchor="center",
-            x=0.5
+            orientation="v",
+            yanchor="top",
+            y=1,
+            xanchor="left",
+            x=1.02
         )
     )
     
@@ -166,5 +166,8 @@ else:
 
     # Display charts
     st.plotly_chart(fig_lines, use_container_width=True)
+    st.caption("Line chart showing total credits issued and credits retired for each year")
     st.plotly_chart(area_fig1, use_container_width=True)
+    st.caption("Total credits issued for each year, colored by a reduction or removal type")
     st.plotly_chart(area_fig2, use_container_width=True)
+    st.caption("Total credits retired for each year, colored by a reduction or removal type")
