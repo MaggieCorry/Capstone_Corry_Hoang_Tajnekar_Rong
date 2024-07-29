@@ -20,6 +20,8 @@ local_css("style.css")
 st.title("Carbon AIQ")
 st.info("Our mission is to empower individuals and organizations with transformative data that drives actionable insights and fosters sustainability. By unifying and harmonizing data from diverse carbon offset registries into a single, accessible platform, we are leading the way in creating a more transparent and impactful path toward a sustainable future.")
 
+st.write("Our Carbon Offset Project Platform website, AIQ provides immense value through the Berkeley Carbon Trading Project by unifying and harmonizing data from multiple carbon offset registries into a single, accessible database. This platform streamlines data processing through automated pipelines and advanced natural language processing (NL) and classification algorithms to empower environmental researchers with clean, accurate data for informed decision-making. This web interface enhances the value for current users of the Excel version of the database by offering robust visualization tools and comprehensive reports, facilitating advanced research and effective management of carbon offset initiatives. ")
+
 df = pd.read_csv("data/streamlit_data.csv")
 # FROM TABLE_X 
 df_dates = pd.read_csv("data/capstone_withDates.csv")
@@ -74,9 +76,6 @@ st.markdown(
 # Display subheaders
 st.subheader("What is Carbon Offset?")
 st.write("A carbon offset is a reduction in emissions of carbon dioxide or other greenhouse gases made in order to compensate for emissions produced elsewhere. By investing in carbon offset projects, such as reforestation or renewable energy, individuals and companies can balance out their own emissions.")
-
-st.subheader("Our Tool's Value")
-st.write("Our Carbon Offset Project Platform website, AIQ provides immense value through the Berkeley Carbon Trading Project by unifying and harmonizing data from multiple carbon offset registries into a single, accessible database. This platform streamlines data processing through automated pipelines and advanced natural language processing (NL) and classification algorithms to empower environmental researchers with clean, accurate data for informed decision-making. This web interface enhances the value for current users of the Excel version of the database by offering robust visualization tools and comprehensive reports, facilitating advanced research and effective management of carbon offset initiatives. ")
 
 st.subheader("Data Sources")
 st.write("Also known as the PROJECT tab from the Current Registry's Excel tool, contains data on roughly 10,000 projects, useful for a project type classification problem and other potential research inquiries. The underlying data for the current registry includes raw data downloaded from American Carbon Registry (ACR), Climate Action Reserve (CAR), Gold Standard, and Verified Carbon Standard. More information on this data can be found in the About BCTP tab.")
