@@ -19,8 +19,8 @@ def local_css(file_name):
 # Apply CSS styles
 local_css("style.css")
 # Load the pre-trained model and preprocessor
-model = joblib.load('../Models/models/logistic_regression_model_59types.pkl')
-preprocessor = joblib.load('../Models/models/tfidf_onehotencoding_59types.pkl')
+model = joblib.load('../data/models/logistic_regression_model_59types.pkl')
+preprocessor = joblib.load('../data/models/tfidf_onehotencoding_59types.pkl')
 
 # List of text features and categorical features
 categorical_features = ['region', 'voluntary_registry', 'arborwa_project']
@@ -99,15 +99,20 @@ with tab2:
         plt.title('Confusion Matrix')
         st.pyplot(plt)
 
-        # # Bar chart for label distribution
-        # label_counts = df['type'].value_counts()
-        
-        # plt.figure(figsize=(10, 5))
-        # plt.bar(label_counts.index, label_counts.values, color='#5B9BD5')  # Using one of the Excel colors
-        # plt.xlabel('Project Type')
-        # plt.ylabel('Count')
-        # plt.title('Distribution of Project Types')
-        # plt.xticks(rotation=90)
-        # st.pyplot(plt)
+        # Calculate classification metrics
+        report = classification_report(Y_test, y_pred, output_dict=True)
+        accuracy = report['accuracy']
+        weighted_f1 = report['weighted avg']['f1-score']
+        avg_f1 = np.mean([report[label]['f1-score'] for label in unique_labels])
+
+    
+        st.write("Classification Report:")
+        metrics_df = pd.DataFrame({
+            'Metric': ['Accuracy', 'Weighted F1 Score', 'Average F1 Score'],
+            'Value': [accuracy, weighted_f1, avg_f1]
+        })
+
+        st.table(metrics_df)
+        #st.table(report)
     else:
         st.info("Please upload and classify data using the 'Type Classification' tab first.")
