@@ -9,23 +9,7 @@ def local_css(file_name):
 
 # Apply CSS styles
 local_css("style.css")
-st.title("About Us")
-
-# Define the path to your local images
-image_folder = "images/team"
-    
-# List of images with descriptions
-# images_info = [
-#         {"file": "pexels-chrisleboutillier-929385.jpg", "caption": "Feature 1", "description": "Description for feature 1."},
-#         {"file": "pexels-loic-manegarium-3855962.jpg", "caption": "Feature 2", "description": "Description for feature 2."},
-#         {"file": "pexels-sarimphotos-1033729.jpg", "caption": "Feature 3", "description": "Description for feature 3."}
-#     ]
-    
-# # Display images with captions and descriptions
-# for image_info in images_info:
-#     image_path = os.path.join(image_folder, image_info["file"])
-#     st.image(image_path, caption=image_info["caption"], use_column_width=True)
-#     st.write(image_info["description"])
+st.title("More Information")
 
 st.header("The Voluntary Registry Offset Database")
 st.write("Berkeley Carbon Trading Project's Voluntary Registry Offsets Database contains all carbon offset projects listed globally by four major voluntary offset project registries: American Carbon Registry (ACR), Climate Action Reserve (CAR), Gold Standard, and Verra (VCS). These four registries generate almost all of the world's voluntary market offsets and include projects eligible for use under the California, Quebec, and Washington lcap-and-trade programs as well as UN Clean Development Mechanism projects that transitioned into one of the voluntary registries.")
@@ -34,6 +18,7 @@ st.write("Barbara K. Haya, Aline Abayo, Ivy S. So, Micah Elias. (2024, May). Vol
 st.write("")
 st.write("To download the database, sign up to receive update notices, provide suggestions, and let us know about data corrections, please visit:")
 st.write("https://gspp.berkeley.edu/faculty-and-impact/centers/cepp/projects/berkeley-carbon-trading-project/offsets-database")
+st.write("")
 
 st.header("Tabs")
 st.subheader("Download/Database Information")

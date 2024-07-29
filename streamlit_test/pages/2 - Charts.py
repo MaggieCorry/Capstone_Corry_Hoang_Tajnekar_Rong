@@ -222,17 +222,26 @@ else:
     col1, col2 = st.columns([1, 2])
     with col1:
         st.plotly_chart(fig1, use_container_width=True)
+        st.caption("Pie chart displaying the total percentage of carbon offset projects for each registry, colored by registry.")
     with col2:
         st.plotly_chart(fig2, use_container_width=True)
+        st.caption("Total credits issued by scope, where each bar is a different scope, and then length of the bar and corresponding number is the total credits issued for each scope.")
 
     col3, col4 = st.columns([1, 2])
     with col3:
         st.plotly_chart(fig3, use_container_width=True)
+        st.caption("Pie chart displaying the total percentage of carbon offset credits issued for each registry, colored by standard.")  
     with col4:
         st.plotly_chart(fig4, use_container_width=True)
+        st.caption("Total credits issued by region, where each bar is a different region, and then length of the bar and corresponding number is the total credits issued for each region.")
 
     st.plotly_chart(fig5, use_container_width=True)
+    st.caption("Total credits issued by project type, where each bar aligns to a different type, and then length of the bar and corresponding number is the total credits issued for each type. The bars are colored by registry.")
     st.plotly_chart(fig6, use_container_width=True)
+    st.caption("Total credits issued by scope, where each bar and its corresponding color is a different scope, and then length of the bar and corresponding number is the total number of projects aligned to each scope.")
     st.plotly_chart(fig7, use_container_width=True)
+    st.caption("Total credits issued by scope, where each bar is a different scope, and then length of the bar and corresponding number is the total number of projects aligned to each scope. The bars are broken out and colored by region, where the size of the color slice indicates the number of projects for each region/scope pairing.")
     st.plotly_chart(fig_donut1, use_container_width=True)
+    st.caption("The donut chart is sized by the number of credit issuances by scope and type. The inner slices are the count of credit issuances by scope, and the outer slices align to the count of issuances by project type that align under that scope.")
     st.plotly_chart(fig_donut2, use_container_width=True)
+    st.caption("The donut chart is sized by the number of credits retired by scope and type. The inner slices are the count of credits retired by scope, and the outer slices align to the count of retirements by project type that align under that scope.")

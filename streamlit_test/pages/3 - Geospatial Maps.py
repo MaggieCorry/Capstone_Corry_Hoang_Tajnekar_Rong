@@ -83,6 +83,8 @@ fig_retired = px.choropleth(
 
 # Display the heatmaps
 st.plotly_chart(fig_issued, use_container_width=True)
+st.caption("Total credits issued by country, where the darker the country, the more credits issued.")
 st.plotly_chart(fig_retired, use_container_width=True)
+st.caption("Total credits retired by country, where the darker the country, the more credits retired.")
 
     

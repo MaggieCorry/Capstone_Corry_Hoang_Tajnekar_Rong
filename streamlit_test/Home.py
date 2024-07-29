@@ -95,6 +95,26 @@ st.write("Also known as the PROJECT tab from the Current Registry's Excel tool, 
 st.subheader("Our Customers")
 st.write("About the customers and their usecases")
 
+st.subheader("Contributors")
+st.write("Our team is made up of a team at BCTP as well as UC Berkeley Masters of Data Science (MiDS) candidates completing their Capstone. This team is comprised of knowledgeable Renewable Energy and Carbon offset SMEs, data scientists, data engineers, and front-end developers.")
+# Create 4 columns
+col1, col2, col3, col4 = st.columns(4)
+with col2:
+    st.image("images/team/Barbara.png", caption="Barbara Haya, PhD, Director, Berkeley Carbon Trading Project", use_column_width=True)
+with col3:
+    st.image("images/team/Aline.png", caption="Aline Abayo, Master’s student at Energy Resource Group at UC Berkeley", use_column_width=True)
+
+col1, col2, col3, col4 = st.columns(4)
+with col1:
+    st.image("images/team/Kevin.png", caption="Kevin Hoang, UC Berkeley MiDS Student", use_column_width=True)
+with col2:
+    st.image("images/team/Roshni.png", caption="Roshni Tajnekar, UC Berkeley MiDS Student", use_column_width=True)
+with col3:
+    st.image("images/team/Maggie.png", caption="Maggie Corry, UC Berkeley MiDS Student", use_column_width=True)
+with col4:
+    st.image("images/team/Roxy.png", caption="Roxy Rong, UC Berkeley MiDS Student", use_column_width=True)
+
+
 st.subheader("Latest News on the Carbon Offset ")
 st.markdown("""
 - https://www.nytimes.com/2024/05/28/climate/yellen-carbon-offset-market.html
