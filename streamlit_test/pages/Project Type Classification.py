@@ -23,8 +23,9 @@ model = joblib.load('../data/models/logistic_regression_model_59types.pkl')
 preprocessor = joblib.load('../data/models/tfidf_onehotencoding_59types.pkl')
 
 # List of text features and categorical features
-categorical_features = ['region', 'voluntary_registry', 'arborwa_project']
-text_features = ['project_name','fully_harmonized_methodologyorprotocol','type_from_registry', 'project_developer']
+# Define categorical and text features
+categorical_features = ['region', 'voluntary_registry', 'arb_wa_project']
+text_features = ['project_name','methodology','project_type_from_the_registry', 'project_developer']
 
  # Streamlit app
 st.title('Project Type Classification')
@@ -36,13 +37,13 @@ with tab1:
     st.info("""
         Please upload a CSV file containing the following columns:
         - **project_name**: Name of the project (text)
-        - **fully_harmonized_methodologyorprotocol**: Methodology or protocol (text)
-        - **type_from_registry**: Type from the registry (text)
+        - **methodology**: Methodology or protocol (text)
+        - **project_type_from_the_registry**: Type from the registry (text)
         - **project_developer**: Name of the developer (text)
         - **region**: Region of the project (categorical)
         - **voluntary_registry**: Voluntary registry (categorical)
-        - **arborwa_project**: ArborWA project (categorical)
-        - **type**: Project type (target variable for prediction)
+        - **arb_wa_project**: ArborWA project (categorical)
+        - **project_type**: Project type (target variable for prediction)
         
         The file should have a header row with these exact column names. Missing columns will result in errors during processing.
     """)
@@ -50,8 +51,8 @@ with tab1:
     
     if uploaded_file:
         df = pd.read_csv(uploaded_file)
-        X_test = df.drop(columns=['type'])
-        Y_test = df['type']
+        X_test = df.drop(columns=['project_type'])
+        Y_test = df['project_type']
         X_test_transformed = preprocessor.transform(X_test)
         y_pred = model.predict(X_test_transformed)
         
@@ -65,7 +66,7 @@ with tab1:
         df['confidence'] = predictions.max(axis=1)  # Get the max probability
 
         # Add column for correct/incorrect predictions
-        df['result'] = df.apply(lambda row: '✔️' if row['model_prediction'] == row['type'] else '❌', axis=1)
+        df['result'] = df.apply(lambda row: '✔️' if row['model_prediction'] == row['project_type'] else '❌', axis=1)
         
         # Select relevant columns for display
         #display_df = df[['project_name', 'type', 'model_prediction', 'result']]
