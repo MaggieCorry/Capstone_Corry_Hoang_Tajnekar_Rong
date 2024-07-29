@@ -39,9 +39,10 @@ else:
 
     col6, col7 = st.columns(2)
     with col6:
-        selected_arbwa = st.multiselect('Select ARB vs WA', options=all_options + list(df['Registry / ARB / WA'].unique()), default=all_options)
-    with col7:
         selected_registries = st.multiselect('Select Registries', options=all_options + list(df['Voluntary Registry'].unique()), default=all_options)
+    with col7:
+        selected_arbwa = st.multiselect('Select ARB vs WA', options=all_options + list(df['Registry / ARB / WA'].unique()), default=all_options)
+
 
     # Reset filters to "No Filter" if they are empty
     if not selected_scopes:
@@ -75,11 +76,11 @@ else:
     if "No Filter" not in selected_states:
         df = df[df['State'].isin(selected_states)]
 
-    if "No Filter" not in selected_arbwa:
-        df = df[df['Registry / ARB / WA'].isin(selected_arbwa)]
-    
     if "No Filter" not in selected_registries:
         df = df[df['Voluntary Registry'].isin(selected_registries)]
+
+    if "No Filter" not in selected_arbwa:
+        df = df[df['Registry / ARB / WA'].isin(selected_arbwa)]
     
     # Filter data based on features
     filtered_df = df.copy()
