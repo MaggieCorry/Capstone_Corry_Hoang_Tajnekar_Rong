@@ -37,7 +37,7 @@ else:
     with col1:
         selected_scopes = st.multiselect('Select Scopes', options=all_options + list(df['Scope'].unique()), default=all_options)
     with col2:
-        selected_types = st.multiselect('Select Types', options=all_options + list(df[' Type'].unique()), default=all_options)
+        selected_types = st.multiselect('Select Types', options=all_options + list(df['Type'].unique()), default=all_options)
     
     col3, col4, col5 = st.columns(3)
     with col3:
@@ -51,7 +51,7 @@ else:
     with col6:
         selected_registries = st.multiselect('Select Registries', options=all_options + list(df['Voluntary Registry'].unique()), default=all_options)
     with col7:
-        selected_arbwa = st.multiselect('Select ARB vs WA', options=all_options + list(df['Registry / ARB / WA'].unique()), default=all_options)
+        selected_arbwa = st.multiselect('Select ARB vs WA', options=all_options + list(df['ARB/WA Project'].unique()), default=all_options)
 
 
     # Reset filters to "No Filter" if they are empty
@@ -75,7 +75,7 @@ else:
         df = df[df['Scope'].isin(selected_scopes)]
     
     if "No Filter" not in selected_types:
-        df = df[df[' Type'].isin(selected_types)]
+        df = df[df['Type'].isin(selected_types)]
     
     if "No Filter" not in selected_countries:
         df = df[df['Country'].isin(selected_countries)]
@@ -90,28 +90,28 @@ else:
         df = df[df['Voluntary Registry'].isin(selected_registries)]
 
     if "No Filter" not in selected_arbwa:
-        df = df[df['Registry / ARB / WA'].isin(selected_arbwa)]
+        df = df[df['Registry/ARB/WA'].isin(selected_arbwa)]
     
     # Filter data based on features
     filtered_df = df.copy()
     filtered_df_dates = df_dates.copy()
 
     # First pie chart
-    df_pie1 = filtered_df.groupby('Registry / ARB / WA').size().reset_index(name='Count')
+    df_pie1 = filtered_df.groupby('Registry/ARB/WA').size().reset_index(name='Count')
     # First bar chart
     df_scopecred_bar = filtered_df.groupby('Scope')['Total Credits Issued'].sum().reset_index(name='Total Credits Issued')
     # Second pie chart
-    df_pie2 = filtered_df.groupby('Registry / ARB / WA')['Total Credits Issued'].sum().reset_index(name='Total Credits Issued')
+    df_pie2 = filtered_df.groupby('Registry/ARB/WA')['Total Credits Issued'].sum().reset_index(name='Total Credits Issued')
     # Second bar chart
     df_scopecred_reg = filtered_df.groupby('Region')['Total Credits Issued'].sum().reset_index(name='Total Credits Issued')
     # Third bar chart
     df_bar1 = filtered_df.groupby('Scope').size().reset_index(name='Count')
     # Fourth bar chart
-    df_typeScopeBar = filtered_df.groupby(['Registry / ARB / WA', ' Type'])['Total Credits Issued'].sum().reset_index(name='Total Credits Issued')
+    df_typeScopeBar = filtered_df.groupby(['Registry/ARB/WA', 'Type'])['Total Credits Issued'].sum().reset_index(name='Total Credits Issued')
     # Fifth bar chart
     df_bar2 = filtered_df.groupby(['Scope', 'Region']).size().reset_index(name='Count')
     # Donut charts
-    grouped_df_donut = filtered_df.groupby(['Scope', ' Type']).agg({'Total Credits Issued':'sum', 'Total Credits Retired':'sum'}).reset_index()
+    grouped_df_donut = filtered_df.groupby(['Scope', 'Type']).agg({'Total Credits Issued':'sum', 'Total Credits Retired':'sum'}).reset_index()
         
     ###############
     ## Aesthetics##
@@ -146,7 +146,7 @@ else:
     ##############
             
     # Pie chart - Offset Projects by Standard
-    fig1 = px.pie(df_pie1, values='Count', names='Registry / ARB / WA', title='Offset Projects by Standard', color='Registry / ARB / WA',
+    fig1 = px.pie(df_pie1, values='Count', names='Registry/ARB/WA', title='Offset Projects by Standard', color='Registry/ARB/WA',
                   color_discrete_sequence=excel_colors)
             
     # Horizontal bar chart - Credits Issued by Scope
@@ -158,7 +158,7 @@ else:
     ##############
             
     # Pie chart - Offset Credits Issued by Standard
-    fig3 = px.pie(df_pie2, values='Total Credits Issued', names='Registry / ARB / WA', title='Offset Credits Issued by Standard', color='Registry / ARB / WA',
+    fig3 = px.pie(df_pie2, values='Total Credits Issued', names='Registry/ARB/WA', title='Offset Credits Issued by Standard', color='Registry/ARB/WA',
                   color_discrete_sequence=excel_colors)
             
     # Horizontal bar chart - Credits Issued by Region
@@ -170,7 +170,7 @@ else:
     ##############
             
     # Horizontal bar chart - Credits Issued by Type
-    fig5 = px.bar(df_typeScopeBar, y=' Type', x='Total Credits Issued', orientation='h', title='Credits Issued by Type', text='Total Credits Issued', color='Registry / ARB / WA',
+    fig5 = px.bar(df_typeScopeBar, y='Type', x='Total Credits Issued', orientation='h', title='Credits Issued by Type', text='Total Credits Issued', color='Registry/ARB/WA',
                   color_discrete_sequence=excel_colors)
     fig5.update_layout(height=1200)
             
@@ -193,7 +193,7 @@ else:
     # Sunburst - Credit Issuances by Type
     fig_donut1 = px.sunburst(
         grouped_df_donut,
-        path=['Scope', ' Type'],
+        path=['Scope', 'Type'],
         values='Total Credits Issued',
         title='Credit Issuances by Type',
         color_discrete_sequence=excel_colors
@@ -207,7 +207,7 @@ else:
     # Sunburst - Credits Retired by Type
     fig_donut2 = px.sunburst(
         grouped_df_donut,
-        path=['Scope', ' Type'],
+        path=['Scope', 'Type'],
         values='Total Credits Retired',
         title='Credits Retired by Type',
         color_discrete_sequence=excel_colors

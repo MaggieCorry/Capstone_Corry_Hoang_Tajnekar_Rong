@@ -22,7 +22,7 @@ st.info("Our mission is to empower individuals and organizations with transforma
 
 st.write("Our Carbon Offset Project Platform website, AIQ provides immense value through the Berkeley Carbon Trading Project by unifying and harmonizing data from multiple carbon offset registries into a single, accessible database. This platform streamlines data processing through automated pipelines and advanced natural language processing (NL) and classification algorithms to empower environmental researchers with clean, accurate data for informed decision-making. This web interface enhances the value for current users of the Excel version of the database by offering robust visualization tools and comprehensive reports, facilitating advanced research and effective management of carbon offset initiatives. ")
 
-df = pd.read_csv("data/streamlit_data.csv")
+df = pd.read_csv("data/Project_Tab.csv")
 # FROM TABLE_X 
 df_dates = pd.read_csv("data/capstone_withDates.csv")
 
