@@ -21,20 +21,24 @@ st.write("https://gspp.berkeley.edu/faculty-and-impact/centers/cepp/projects/ber
 st.write("")
 
 st.header("Tabs")
-st.subheader("Download/Database Information")
+st.subheader("Data Download")
 st.write("All information for Carbon AIQ is stored in the 'Download Data' tab. This lists all projects in all registries and can be filtered/sorted using drop-down menus. Each offset credit nominally represents one metric tonne of CO2-equivalent reduced or removed from the atmosphere.")
 st.write("More information on calculations can be found here: https://gspp.berkeley.edu/assets/uploads/page/VROD-Calculations.pdf")
 
-st.subheader("Charts and Graphs")
+st.subheader("Charts")
 st.write("Various charts that break down projects by features can be found in the Charts and Graphs tab. The entire dashboard can be filtered by the filters at the top of the tab. If a category in a legend is clicked, it will be removed. If it is double clicked, it will be the only category shown.")
 st.write("When hovered over, there will be multiple additional chart options in the top right that will appear. A useful component is the expansion option, which will bring the chart to full page mode. Furthermore, the image of the chart can be downloaded.")
-st.subheader("Time Series")
+st.subheader("Temporal Charts")
 st.write("Various graphics that show project information over time can be found in the Time Series tab. The entire dashboard can be filtered by the time slider filter at the top of the tab.")
 st.write("When hovered over, there will be multiple additional chart options in the top right that will appear. A useful component is the expansion option, which will bring the chart to full page mode. Furthermore, the image of the chart can be downloaded.")
 
-st.subheader("Global Trends")
-st.write("Two maps are shown to show greater information of projects across regions.")
+st.subheader("Geospatial Maps")
+st.write("Three maps are shown to show greater information of projects across regions.")
 st.write("When hovered over, there will be multiple additional chart options in the top right that will appear. A useful component is the expansion option, which will bring the chart to full page mode. Furthermore, the image of the chart can be downloaded.")
+
+st.subheader("Project Type Classification")
+st.write("This page offers enhanced tools for researchers to classify new projects")
+st.write("Upon uploading a new CSV file, our AI model accurately categorizes the projects into one of 59 distinct project types.")
 
 st.header("Registry Data")
 st.subheader("American Carbon Registry (ACR)")
