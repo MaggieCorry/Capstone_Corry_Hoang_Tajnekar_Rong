@@ -12,7 +12,7 @@ if 'df' not in st.session_state:
 else:
     df = st.session_state.df   
     st.title("Download Data")
-    st.write("Full Data:")
+    st.info("The latest version of the VROD is now available for download. Click 'Download CSV' to get the most up-to-date data.")
     st.write(df)
         
     st.download_button(label='Download CSV', data=df.to_csv(index=False), file_name='data.csv', mime='text/csv')

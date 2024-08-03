@@ -20,8 +20,6 @@ local_css("style.css")
 st.title("Carbon AIQ")
 st.info("Our mission is to empower individuals and organizations with transformative data that drives actionable insights and fosters sustainability. By unifying and harmonizing data from diverse carbon offset registries into a single, accessible platform, we are leading the way in creating a more transparent and impactful path toward a sustainable future.")
 
-st.write("Our Carbon Offset Project Platform website, AIQ provides immense value through the Berkeley Carbon Trading Project by unifying and harmonizing data from multiple carbon offset registries into a single, accessible database. This platform streamlines data processing through automated pipelines and advanced natural language processing (NL) and classification algorithms to empower environmental researchers with clean, accurate data for informed decision-making. This web interface enhances the value for current users of the Excel version of the database by offering robust visualization tools and comprehensive reports, facilitating advanced research and effective management of carbon offset initiatives. ")
-
 df = pd.read_csv("data/Project_Tab.csv")
 # FROM TABLE_X 
 df_dates = pd.read_csv("data/Project_Tab_Pivoted.csv")
@@ -80,10 +78,8 @@ st.write("A carbon offset is a reduction in emissions of carbon dioxide or other
 st.subheader("About the Carbon Offset Market")
 st.write("In 2023, companies purchased and retired a record 164 million offsets, which was a 6% increase from 2022. The market is evolving rapidly, and some say it could grow to be worth $100 billion a year by 2030-35. However, others say that without regulation, no one would pay for carbon emissions, and that heavy-emitting companies could be criticized for having a right to pollute")
 st.write("There are two types of carbon offset markets: voluntary and compliance:")
-st.markdown("Voluntary markets")
-st.write("These markets are not regulated, and organizations participate based on their own emissions reduction goals. Individuals, companies, and other organizations can participate in voluntary markets, and consumers can buy offsets to compensate for emissions from specific activities, like long flights.")
-st.markdown("Compliance markets")
-st.write("These markets are created by government regulations to reduce emissions, and some of the most active compliance markets are in Europe and California.")
+st.markdown(""" - **Voluntary markets** - These markets are not regulated, and organizations participate based on their own emissions reduction goals. Individuals, companies, and other organizations can participate in voluntary markets, and consumers can buy offsets to compensate for emissions from specific activities, like long flights.
+- **Compliance markets** -These markets are created by government regulations to reduce emissions, and some of the most active compliance markets are in Europe and California.""")
 
 
 st.subheader("Our Tool's Value")
@@ -96,7 +92,7 @@ st.subheader("Our Customers")
 st.write("About the customers and their usecases")
 
 st.subheader("Contributors")
-st.write("Our team is made up of a team at BCTP as well as UC Berkeley Masters of Data Science (MiDS) candidates completing their Capstone. This team is comprised of knowledgeable Renewable Energy and Carbon offset SMEs, data scientists, data engineers, and front-end developers.")
+st.write("Our team is made up of a team at BCTP as well as UC Berkeley Masters of Data Science (MIDS) candidates completing their Capstone. This team is comprised of knowledgeable Renewable Energy and Carbon offset SMEs, data scientists, data engineers, and front-end developers.")
 # Create 4 columns
 col1, col2, col3, col4 = st.columns(4)
 with col2:
@@ -106,13 +102,13 @@ with col3:
 
 col1, col2, col3, col4 = st.columns(4)
 with col1:
-    st.image("images/team/Kevin.png", caption="Kevin Hoang, UC Berkeley MiDS Student", use_column_width=True)
+    st.image("images/team/Kevin.png", caption="Kevin Hoang, UC Berkeley MIDS Student", use_column_width=True)
 with col2:
-    st.image("images/team/Roshni.png", caption="Roshni Tajnekar, UC Berkeley MiDS Student", use_column_width=True)
+    st.image("images/team/Roshni.png", caption="Roshni Tajnekar, UC Berkeley MIDS Student", use_column_width=True)
 with col3:
-    st.image("images/team/Maggie.png", caption="Maggie Corry, UC Berkeley MiDS Student", use_column_width=True)
+    st.image("images/team/Maggie.png", caption="Maggie Corry, UC Berkeley MIDS Student", use_column_width=True)
 with col4:
-    st.image("images/team/Roxy.png", caption="Roxy Rong, UC Berkeley MiDS Student", use_column_width=True)
+    st.image("images/team/Roxy.png", caption="Roxy Rong, UC Berkeley MIDS Student", use_column_width=True)
 
 
 st.subheader("Latest News on the Carbon Offset ")

@@ -2,7 +2,6 @@ import streamlit as st
 import plotly.express as px
 import pandas as pd
 
-# Function to read CSS file and apply styles
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -15,76 +14,66 @@ if 'df' not in st.session_state:
 else:
     df = st.session_state.df
     
-    st.title("Carbon offset projects around the world")
-
-    # Define a mapping from custom regions to country names
-    region_to_country = {
-        'Central Asia': ['Kazakhstan', 'Uzbekistan', 'Turkmenistan', 'Kyrgyzstan', 'Tajikistan'],
-        'Eastern Asia': ['China', 'Japan', 'South Korea', 'North Korea', 'Taiwan'],
-        'Eastern Europe': ['Poland', 'Ukraine', 'Czech Republic', 'Hungary', 'Romania'],
-        'Europe': ['Germany', 'France', 'United Kingdom', 'Italy', 'Spain', 'Netherlands'],
-        'International': [],  # No specific countries
-        'Latin America and the Caribbean': ['Brazil', 'Argentina', 'Colombia', 'Chile', 'Peru'],
-        'North America': ['United States', 'Canada', 'Mexico'],
-        'Northern Africa': ['Egypt', 'Libya', 'Morocco', 'Algeria', 'Tunisia'],
-        'Oceania': ['Australia', 'New Zealand'],
-        'South-Eastern Asia': ['Thailand', 'Vietnam', 'Malaysia', 'Indonesia', 'Philippines'],
-        'Southern Asia': ['India', 'Pakistan', 'Bangladesh', 'Sri Lanka', 'Nepal'],
-        'Sub-Saharan Africa': ['Nigeria', 'South Africa', 'Kenya', 'Ethiopia', 'Ghana'],
-        'Western Asia': ['Saudi Arabia', 'Turkey', 'Iran', 'United Arab Emirates', 'Israel']
-    }
+    st.title("Carbon Offset Around the World")
     
-    # Aggregate credits by region for Total Credits Issued
-region_credits_issued = df.groupby('Region')['Total Credits Issued'].sum().reset_index()
-
-# Aggregate credits by region for Total Credits Retired
-region_credits_retired = df.groupby('Region')['Total Credits Retired'].sum().reset_index()
-
-# Map the regions in the dataset to countries
-def expand_region_data(region_credits, total_column):
-    expanded_rows = []
-    for region, countries in region_to_country.items():
-        region_df = region_credits[region_credits['Region'] == region]
-        for country in countries:
-            if region_df.empty:
-                continue
-            expanded_rows.append({'Region': region, 'Country': country, total_column: region_df[total_column].sum()})
-
-    # Handle 'International' region separately
-    international_count = region_credits[region_credits['Region'] == 'International'][total_column].sum()
-    expanded_rows.append({'Region': 'International', 'Country': 'Global', total_column: international_count})
-
-    return pd.DataFrame(expanded_rows)
-
-# Create dataframes for plotting
-expanded_df_issued = expand_region_data(region_credits_issued, 'Total Credits Issued')
-expanded_df_retired = expand_region_data(region_credits_retired, 'Total Credits Retired')
-
-# Create heatmaps
-fig_issued = px.choropleth(
-    expanded_df_issued,
-    locations='Country',
-    locationmode='country names',
-    color='Total Credits Issued',
-    hover_name='Country',
-    color_continuous_scale='Blues',
-    title='Total Credits Issued by Country'
-)
-
-fig_retired = px.choropleth(
-    expanded_df_retired,
-    locations='Country',
-    locationmode='country names',
-    color='Total Credits Retired',
-    hover_name='Country',
-    color_continuous_scale='Blues',
-    title='Total Credits Retired by Country'
-)
-
-# Display the heatmaps
-st.plotly_chart(fig_issued, use_container_width=True)
-st.caption("Total credits issued by country, where the darker the country, the more credits issued.")
-st.plotly_chart(fig_retired, use_container_width=True)
-st.caption("Total credits retired by country, where the darker the country, the more credits retired.")
-
+    # Aggregate credits by region
+    region_credits = df.groupby('Country').agg({
+        'Total Credits Issued': 'sum',
+        'Total Credits Retired': 'sum'
+    }).reset_index()
     
+    # Calculate the count of projects by country
+    project_count = df['Country'].value_counts().reset_index()
+    project_count.columns = ['Country', 'Project Count']
+    
+    # Merge the project count with the region credits data
+    region_credits = pd.merge(region_credits, project_count, on='Country')
+    # Initialize the selection state
+    if 'credit_type' not in st.session_state:
+        st.session_state.credit_type = 'Total Credits Issued'
+    
+     # Create three columns for layout, using the middle one for buttons
+    col1, col2, col3 = st.columns([1, 1, 1])
+    
+    with col1:
+        button_issued = st.button('Total Credits Issued')
+    with col2:
+        button_retired = st.button('Total Credits Retired')
+    with col3:
+        button_count = st.button('Project Count')
+        
+    if button_issued:
+        st.session_state.credit_type = 'Total Credits Issued'
+    elif button_retired:
+        st.session_state.credit_type = 'Total Credits Retired'
+    elif button_count:
+        st.session_state.credit_type = 'Project Count'
+    
+    option = st.session_state.credit_type
+    
+    # Create heatmap based on selection
+    fig = px.choropleth(
+        region_credits,
+        locations='Country',
+        locationmode='country names',
+        color=option,
+        hover_name='Country',
+        color_continuous_scale='Blues',
+        title=f'{option} by Country'
+    )
+    fig.update_geos(projection_type="natural earth")
+    fig.update_geos(
+        showcoastlines=False,
+        showland=True,
+        showcountries=False,
+        showocean=False,
+        landcolor="white",
+        oceancolor="white"
+    )
+    fig.update_layout(margin={"r":0,"t":21,"l":0,"b":0})  # Remove the border and padding
+
+    # Display the heatmap
+    st.markdown('<div class="plot-container">', unsafe_allow_html=True)
+    st.plotly_chart(fig, use_container_width=True)  # Use full container width
+    st.markdown('</div>', unsafe_allow_html=True)
+    st.caption(f"{option} by country, where the darker the country, the more {option}.")
