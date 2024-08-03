@@ -88,8 +88,8 @@ st.write("Carbon AIQ provides immense value through the Berkeley Carbon Trading 
 st.subheader("Data Sources")
 st.write("Also known as the PROJECT tab from the Current Registry's Excel tool, contains data on roughly 10,000 projects, useful for a project type classification problem and other potential research inquiries. The underlying data for the current registry includes raw data downloaded from American Carbon Registry (ACR), Climate Action Reserve (CAR), Gold Standard, and Verified Carbon Standard. More information on this data can be found in the About BCTP tab.")
 
-st.subheader("Our Customers")
-st.write("About the customers and their usecases")
+# st.subheader("Our Customers")
+# st.write("About the customers and their usecases")
 
 st.subheader("Contributors")
 st.write("Our team is made up of a team at BCTP as well as UC Berkeley Masters of Data Science (MIDS) candidates completing their Capstone. This team is comprised of knowledgeable Renewable Energy and Carbon offset SMEs, data scientists, data engineers, and front-end developers.")

@@ -121,9 +121,9 @@ else:
     excel_colors = [
         '#5B9BD5',  # Blue
         '#ED7D31',  # Orange
-        '#A5A5A5',  # Gray
-        '#FFC000',  # Gold
         '#4472C4',  # Dark Blue
+        '#FFC000',  # Gold
+        '#A5A5A5',  # Gray
         '#70AD47',  # Green
         '#255E91',  # Darker Blue
         '#9E480E',  # Darker Orange
@@ -150,7 +150,8 @@ else:
                   color_discrete_sequence=excel_colors)
             
     # Horizontal bar chart - Credits Issued by Scope
-    fig2 = px.bar(df_scopecred_bar, y='Scope', x='Total Credits Issued', orientation='h', title='Credits Issued by Scope', text='Total Credits Issued',
+    df_scopecred_bar_sorted = df_scopecred_bar.sort_values(by='Total Credits Issued', ascending=True)
+    fig2 = px.bar(df_scopecred_bar_sorted, y='Scope', x='Total Credits Issued', orientation='h', title='Credits Issued by Scope', text='Total Credits Issued',
                   color_discrete_sequence=excel_colors)
             
     ##############
@@ -162,7 +163,8 @@ else:
                   color_discrete_sequence=excel_colors)
             
     # Horizontal bar chart - Credits Issued by Region
-    fig4 = px.bar(df_scopecred_reg, y='Region', x='Total Credits Issued', orientation='h', title='Credits Issued by Region', text='Total Credits Issued',
+    df_regecred_bar_sorted = df_scopecred_reg.sort_values(by='Total Credits Issued', ascending=True)
+    fig4 = px.bar(df_regecred_bar_sorted, y='Region', x='Total Credits Issued', orientation='h', title='Credits Issued by Region', text='Total Credits Issued',
                   color_discrete_sequence=excel_colors)
             
     ##############
@@ -170,6 +172,7 @@ else:
     ##############
             
     # Horizontal bar chart - Credits Issued by Type
+    df_typeScopeBar_sorted = df_typeScopeBar.sort_values(by=['Total Credits Issued'], ascending=False)
     fig5 = px.bar(df_typeScopeBar, y='Type', x='Total Credits Issued', orientation='h', title='Credits Issued by Type', text='Total Credits Issued', color='Registry/ARB/WA',
                   color_discrete_sequence=excel_colors)
     fig5.update_layout(height=1200)
@@ -179,10 +182,12 @@ else:
     ##############
             
     # Pie chart - Projects by Scope
-    fig6 = px.bar(df_bar1, y='Scope', x='Count', orientation='h', title='Projects by Scope', color='Scope', text='Count',
+    df_bar1_sorted = df_bar1.sort_values(by='Count', ascending=True)
+    fig6 = px.bar(df_bar1_sorted, y='Scope', x='Count', orientation='h', title='Projects by Scope', color='Scope', text='Count',
                   color_discrete_sequence=excel_colors)
             
     # Horizontal bar chart - Projects Distribution by Scope and Geographic Region
+    df_bar2_sorted = df_bar2.sort_values(by='Count', ascending=False)
     fig7 = px.bar(df_bar2, y='Scope', x='Count', orientation='h', title='Projects Distribution by Scope and Geographic Region', color='Region', text='Count',
                   color_discrete_sequence=excel_colors)
             
