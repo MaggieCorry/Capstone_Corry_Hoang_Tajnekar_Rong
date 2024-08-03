@@ -103,7 +103,7 @@ else:
     # Issuances line
     fig_lines.add_trace(go.Scatter(
         x=grouped_df_lines['Year'], 
-        y=grouped_df_lines['Credits issued by issuance year'], 
+        y=grouped_df_lines['Total Credits Issued'], 
         mode='lines+markers', 
         name='Issuances'
     ))
@@ -111,7 +111,7 @@ else:
     # Retirements line
     fig_lines.add_trace(go.Scatter(
         x=grouped_df_lines['Year'], 
-        y=grouped_df_lines['Credits retired or cancelled'], 
+        y=grouped_df_lines['Total Credits Retired'], 
         mode='lines+markers', 
         name='Retirements'
     ))
@@ -132,12 +132,12 @@ else:
     # Prepare data for area charts
     @st.cache_data
     def prepare_area_data(filtered_df_dates):
-        grouped_df_arealines = filtered_df_dates.groupby(['Year','Reduction / Removal']).sum().reset_index()
-        total_per_year = filtered_df_dates.groupby('Year').agg({'Credits issued by issuance year':'sum','Credits retired or cancelled':'sum'}).reset_index()
+        grouped_df_arealines = filtered_df_dates.groupby(['Year','Reduction/Removal']).sum().reset_index()
+        total_per_year = filtered_df_dates.groupby('Year').agg({'Total Credits Issued':'sum','Total Credits Retired':'sum'}).reset_index()
         total_per_year.columns = ['Year', 'Total Issuances', 'Total Retirements']
         grouped_df_arealines = pd.merge(grouped_df_arealines, total_per_year, on='Year')
-        grouped_df_arealines['Issue_perc'] = round((grouped_df_arealines['Credits issued by issuance year']/grouped_df_arealines['Total Issuances'])*100, 0)
-        grouped_df_arealines['Retire_perc'] = round((grouped_df_arealines['Credits retired or cancelled']/grouped_df_arealines['Total Retirements'])*100, 0)
+        grouped_df_arealines['Issue_perc'] = round((grouped_df_arealines['Total Credits Issued']/grouped_df_arealines['Total Issuances'])*100, 0)
+        grouped_df_arealines['Retire_perc'] = round((grouped_df_arealines['Total Credits Retired']/grouped_df_arealines['Total Retirements'])*100, 0)
         return grouped_df_arealines
     
     grouped_df_arealines = prepare_area_data(filtered_df_dates)
@@ -146,9 +146,9 @@ else:
     area_fig1 = px.area(
         grouped_df_arealines,
         x='Year',
-        y='Credits issued by issuance year',
+        y='Total Credits Issued',
         text='Issue_perc',
-        color='Reduction / Removal',
+        color='Reduction/Removal',
         title='Issuances by Reduction / Removal Over Time',
         color_discrete_sequence=excel_colors
     )
@@ -157,9 +157,9 @@ else:
     area_fig2 = px.area(
         grouped_df_arealines,
         x='Year',
-        y='Credits retired or cancelled',
+        y='Total Credits Retired',
         text='Retire_perc',
-        color='Reduction / Removal',
+        color='Reduction/Removal',
         title='Retirements by Reduction / Removal Over Time',
         color_discrete_sequence=excel_colors
     )
