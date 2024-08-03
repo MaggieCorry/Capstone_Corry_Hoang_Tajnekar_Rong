@@ -24,7 +24,7 @@ st.write("Our Carbon Offset Project Platform website, AIQ provides immense value
 
 df = pd.read_csv("data/Project_Tab.csv")
 # FROM TABLE_X 
-df_dates = pd.read_csv("data/capstone_withDates.csv")
+df_dates = pd.read_csv("data/Project_Tab_Pivoted.csv")
 
 # Initialize session state with the DataFrame
 if 'df' not in st.session_state:
