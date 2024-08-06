@@ -56,7 +56,7 @@ else:
     st.write("No images found in the specified folder.")
 
 # Update the index for the next image
-st.session_state.index = (st.session_state.index + 1) % len(images)
+st.session_state.index = 60
 # Add CSS to make the image take the full height
 st.markdown(
     """
