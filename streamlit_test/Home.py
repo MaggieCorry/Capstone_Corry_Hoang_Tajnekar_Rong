@@ -35,28 +35,28 @@ if 'df_dates' not in st.session_state:
 image_folder = "images"
         
 # Function to load images from a directory
-def load_images(image_folder):
-    image_paths = glob.glob(f"{image_folder}/*.jpg")  # You can change the extension based on your images
-    images = [(Image.open(image_path), os.path.splitext(os.path.basename(image_path))[0]) for image_path in image_paths]
-    return images
+# def load_images(image_folder):
+#     image_paths = glob.glob(f"{image_folder}/*.jpg")  # You can change the extension based on your images
+#     images = [(Image.open(image_path), os.path.splitext(os.path.basename(image_path))[0]) for image_path in image_paths]
+#     return images
 
-# Load images
-images = load_images(image_folder)
+# # Load images
+# images = load_images(image_folder)
 
 # Initialize session state
-if 'index' not in st.session_state:
-    st.session_state.index = 0
+# if 'index' not in st.session_state:
+#     st.session_state.index = 0
 
 # Display the current image
-if images:
-    current_image, caption = images[st.session_state.index]
-    st.image(current_image, use_column_width=True, caption=caption)
+# if images:
+#     current_image, caption = images[st.session_state.index]
+#     st.image(current_image, use_column_width=True, caption=caption)
    
-else:
-    st.write("No images found in the specified folder.")
+# else:
+#     st.write("No images found in the specified folder.")
 
 # Update the index for the next image
-st.session_state.index = 60
+# st.session_state.index = (st.session_state.index + 1) % len(images)
 # Add CSS to make the image take the full height
 st.markdown(
     """
@@ -122,6 +122,6 @@ st.markdown("""
 #st.subheader("Contributors")
 
 # Auto-refresh every 3 seconds
-time.sleep(2)
+#time.sleep(2)
 st.experimental_rerun()  # Refresh the app to update the displayed image
 
